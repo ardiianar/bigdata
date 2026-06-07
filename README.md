@@ -1,6 +1,10 @@
 #  Motor Vehicle Collision Big Data Analytics & Forecasting Dashboard
 
-Sebuah proyek **Big Data Analytics (BDA)** dan **Machine Learning** untuk menganalisis, mengklasifikasikan tingkat risiko, dan meramalkan tingkat kecelakaan kendaraan bermotor di New York City (NYC) menggunakan dataset skala besar dari *NYC Open Data*. Proyek ini mengintegrasikan ekosistem **Hadoop MapReduce** untuk pemrosesan paralel terdistribusi dan model **Random Forest Classifier** untuk klasifikasi & peramalan prediktif.
+# Motor Vehicle Collision Big Data Analytics & Risk Prediction Dashboard
+
+Proyek ini merupakan implementasi **Big Data Analytics (BDA)** untuk menganalisis data kecelakaan kendaraan bermotor di New York City menggunakan dataset **Motor Vehicle Collisions – Crashes**. Proyek ini berfokus pada pengolahan data berskala besar, analisis kecelakaan berdasarkan wilayah, prediksi tingkat risiko kecelakaan, serta penyajian hasil analisis melalui dashboard website.
+
+Secara keseluruhan, proyek ini mengintegrasikan proses **preprocessing data, penyimpanan HDFS, Hadoop MapReduce, Machine Learning Random Forest, evaluasi model, dan dashboard website** untuk menghasilkan sistem analitik yang mampu membantu memahami pola kecelakaan serta memprediksi tingkat risiko kecelakaan kendaraan bermotor.
 
 ---
 
