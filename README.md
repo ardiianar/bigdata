@@ -1,79 +1,21 @@
-# 🚗 Motor Vehicle Collision Big Data Analytics & Forecasting Dashboard
+#  Motor Vehicle Collision Big Data Analytics & Forecasting Dashboard
 
 Sebuah proyek **Big Data Analytics (BDA)** dan **Machine Learning** untuk menganalisis, mengklasifikasikan tingkat risiko, dan meramalkan tingkat kecelakaan kendaraan bermotor di New York City (NYC) menggunakan dataset skala besar dari *NYC Open Data*. Proyek ini mengintegrasikan ekosistem **Hadoop MapReduce** untuk pemrosesan paralel terdistribusi dan model **Random Forest Classifier** untuk klasifikasi & peramalan prediktif.
 
 ---
 
-## 🚀 Fitur Utama
+##  Fitur Utama
 
-1. **Preprocessing Data**: Pembersihan data mentah berukuran besar dari NYC Open Data, penanganan nilai kosong/inkonsisten, pembersihan koordinat geospasial, dan penataan format waktu kecelakaan.
-2. **Hadoop MapReduce (Borough Analysis)**: Pemrosesan paralel terdistribusi dengan Hadoop Streaming untuk mengagregasi total kecelakaan, korban luka (*injured*), dan korban meninggal (*killed*) berdasarkan wilayah (*Borough*).
-3. **Risk Classification (Random Forest Classifier)**: Pemodelan Machine Learning untuk mengklasifikasikan tingkat keparahan risiko kecelakaan menjadi `Low`, `Medium`, atau `High` berdasarkan pola historis.
-4. **Time-Series Forecasting**: Peramalan jumlah kecelakaan harian dan estimasi tingkat risikonya untuk 30 hari ke depan menggunakan regresi deret waktu dengan memperhitungkan faktor akhir pekan (*weekend multiplier*).
-5. **Interactive Dashboard**: Visualisasi data interaktif yang disajikan dalam dua versi:
+1. **Hadoop MapReduce (Borough Analysis)**: Pemrosesan paralel terdistribusi dengan Hadoop Streaming untuk mengagregasi total kecelakaan, korban luka (*injured*), dan korban meninggal (*killed*) berdasarkan wilayah (*Borough*).
+2. **Risk Classification (Random Forest Classifier)**: Pemodelan Machine Learning untuk mengklasifikasikan tingkat keparahan risiko kecelakaan menjadi `Low`, `Medium`, atau `High` berdasarkan pola historis.
+3. **Time-Series Forecasting**: Peramalan jumlah kecelakaan harian dan estimasi tingkat risikonya untuk 30 hari ke depan menggunakan regresi deret waktu dengan memperhitungkan faktor akhir pekan (*weekend multiplier*).
+4. **Interactive Dashboard**: Visualisasi data interaktif yang disajikan dalam dua versi:
    - **Streamlit App** (`app.py`): Dashboard analitik berbasis Python Streamlit.
    - **Static Web Dashboard** (`website/`): Dashboard berbasis HTML, CSS, dan Javascript yang ringan dan cepat.
 
 ---
 
-## 🛠️ Struktur Direktori
-
-* `app.py`: File aplikasi utama untuk dashboard analitik berbasis Streamlit.
-* `preprocessing/`: Script pembersihan data awal (`preprocessing_motor_vehicle.py`).
-* `hadoop/`: Script Mapper dan Reducer untuk analisis hotspot dan risiko tingkat lanjut.
-* `mapreduce/`: Script Mapper dan Reducer untuk agregasi data per Borough (`mapper_borough.py` & `reducer_borough.py`).
-* `ml/`: Implementasi machine learning untuk klasifikasi risiko, evaluasi model, dan forecasting (`forecast_risk_next_month.py` & `risk_prediction_from_hadoop.py`).
-* `scripts/`: Script otomatisasi upload dataset ke Hadoop HDFS.
-* `output/`: Folder penyimpanan hasil keluaran dari MapReduce dan model Machine Learning dalam format CSV/Text.
-* `website/`: File dashboard versi web statis (HTML, CSS, JS) beserta sampel data visualisasinya.
-
 ---
 
-## 💻 Cara Menjalankan Project
 
-### Prerequisites
-Pastikan perangkat Anda sudah terinstal:
-* Python 3.8 ke atas
-* Hadoop (opsional, jika ingin menjalankan MapReduce secara mandiri)
 
-### 1. Instalasi Library Python
-Instal seluruh library Python yang dibutuhkan dengan menjalankan perintah berikut:
-```bash
-pip install streamlit pandas numpy scikit-learn
-```
-
-### 2. Menjalankan Dashboard Streamlit
-Untuk membuka dashboard interaktif Streamlit, jalankan perintah ini di terminal:
-```bash
-streamlit run app.py
-```
-Aplikasi akan otomatis terbuka di browser pada alamat `http://localhost:8501`.
-
-### 3. Menjalankan Dashboard Web Statis
-Anda bisa membuka file `website/index.html` langsung di browser, atau menjalankannya melalui server lokal:
-```bash
-cd website
-python -m http.server 8000
-```
-Lalu akses `http://localhost:8000` di web browser Anda.
-
-### 4. Eksekusi Hadoop MapReduce
-Untuk menjalankan Borough Analysis menggunakan Hadoop Streaming, gunakan perintah template berikut:
-```bash
-hadoop jar /path/to/hadoop-streaming.jar \
-  -file mapper_borough.py -mapper "python mapper_borough.py" \
-  -file reducer_borough.py -reducer "python reducer_borough.py" \
-  -input /path/to/hdfs/input/data.csv \
-  -output /path/to/hdfs/output
-```
-
----
-
-## 📊 Hasil Evaluasi Model
-
-Model **Random Forest Classifier** yang dilatih untuk mengklasifikasikan risiko kecelakaan menghasilkan performa sebagai berikut:
-* **Accuracy**: ~62% (setelah dilakukan optimasi fitur).
-* **Klasifikasi**: Model sangat andal dalam mendeteksi kejadian `Low Risk` (karena volume data mayoritas), serta memberikan estimasi akurat untuk pembagian kejadian berisiko `Medium` dan `High` berdasarkan metrik korban luka maupun meninggal.
-
----
-*Proyek ini dikembangkan oleh **[ardiianar](https://github.com/ardiianar)** sebagai bagian dari implementasi Big Data Analytics.*
