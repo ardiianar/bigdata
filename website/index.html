@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motor Vehicle Collision Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div>
+      <h1>Motor Vehicle Collision Dashboard</h1>
+      <p>Big Data Analytics menggunakan Hadoop MapReduce dan Random Forest</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="overview">
+      <div>
+        <h2>Project Overview</h2>
+        <p style="margin-bottom: 12px;">
+          Projek Big Data Analytics (BDA) ini bertujuan untuk menganalisis dan memprediksi risiko kecelakaan kendaraan bermotor di New York City (NYC) menggunakan dataset historis berskala besar dari NYC Open Data yang mencakup jutaan catatan kecelakaan. Sistem ini mengintegrasikan ekosistem Big Data Hadoop MapReduce untuk pemrosesan paralel terdistribusi, dikombinasikan dengan algoritma Machine Learning Random Forest untuk klasifikasi dan peramalan prediktif.
+        </p>
+        <p style="margin-bottom: 12px;">
+          Metodologi projek ini terbagi menjadi empat tahap utama:
+        </p>
+        <ul style="margin-left: 20px; margin-bottom: 12px; line-height: 1.7; color: #4b5563;">
+          <li><strong>Preprocessing Data:</strong> Pembersihan dan penyaringan data mentah berukuran gigabyte untuk menangani nilai kosong, duplikasi koordinat, serta penyesuaian format tanggal/waktu kecelakaan.</li>
+          <li><strong>Hadoop MapReduce (Borough Analysis):</strong> Pemrosesan paralel terdistribusi menggunakan arsitektur Hadoop untuk menghitung total kecelakaan di setiap wilayah (Borough) dengan efisiensi tinggi.</li>
+          <li><strong>Klasifikasi Risiko (Random Forest Classifier):</strong> Pemodelan Machine Learning untuk mengklasifikasikan tingkat keparahan risiko kecelakaan ("High", "Medium", "Low") berdasarkan fitur seperti lokasi, tanggal, faktor penyebab kecelakaan, dan jenis kendaraan yang terlibat, mencapai tingkat akurasi sebesar 62% setelah optimasi fitur.</li>
+          <li><strong>Peramalan Deret Waktu (Time-Series Forecasting):</strong> Prediksi tren jumlah kecelakaan harian dan tingkat risiko harian untuk 30 hari ke depan menggunakan pendekatan lag-based regresi autoregresif terawasi, murni memanfaatkan pola data historis yang sudah terjadi sebelumnya.</li>
+        </ul>
+        <p>
+          Melalui visualisasi dashboard interaktif ini, pemangku kepentingan seperti kepolisian (NYPD) dan dinas perhubungan dapat memantau wilayah rawan kecelakaan (hotspot), memahami faktor utama penyebab insiden, serta mengantisipasi tren kecelakaan di masa mendatang guna merancang strategi pencegahan yang lebih efektif.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Ringkasan KPI Kecelakaan</h2>
+        <p>Menampilkan total data kecelakaan, korban, borough, dan distribusi risiko.</p>
+      </div>
+      <div id="kpiCards" class="kpi-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Borough Analysis</h2>
+        <p>Analisis jumlah kecelakaan berdasarkan wilayah borough hasil agregasi Hadoop MapReduce.</p>
+      </div>
+      <div class="table-wrapper">
+        <table id="boroughTable"></table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Distribusi Risiko Kecelakaan</h2>
+        <p>Distribusi hasil prediksi risiko kecelakaan berdasarkan kategori Low, Medium, dan High pada data historis.</p>
+      </div>
+      <div class="table-wrapper">
+        <table id="riskTable"></table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Evaluasi Model Random Forest</h2>
+        <p>Evaluasi model klasifikasi risiko menggunakan accuracy, precision, recall, F1-score, dan confusion matrix.</p>
+      </div>
+
+      <div id="evaluationCards" class="kpi-grid"></div>
+
+      <h3 class="sub-title">Confusion Matrix</h3>
+      <div class="table-wrapper">
+        <table id="confusionTable"></table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Peramalan Risiko Kecelakaan (1 Bulan Ke Depan)</h2>
+        <p>Hasil peramalan jumlah kecelakaan harian beserta tingkat risikonya untuk 30 hari ke depan murni berdasarkan data historis yang sudah terjadi.</p>
+      </div>
+      <div class="table-wrapper">
+        <table id="forecastTable"></table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Motor Vehicle Collisions Big Data Analytics Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

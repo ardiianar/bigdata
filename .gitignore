@@ -1,0 +1,21 @@
+# Ignore data directories
+data/raw/
+data/processed/
+website/data_old/
+
+# Ignore large CSV files in output (exceeding 100MB)
+output/motor_vehicle_clean.csv
+output/motor_vehicle_from_hdfs.csv
+output/risk_prediction_from_hadoop.csv
+
+# Ignore python caches and virtualenvs
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
